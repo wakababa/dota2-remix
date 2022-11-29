@@ -99,3 +99,17 @@ export default function Heroes() {
 }
 
 
+export function ErrorBoundary({ error }:{error:String}) {
+    console.error(error);
+    return (
+        <html>
+        <head>
+            <title>Oh no!</title>
+        </head>
+        <body>
+        {JSON.stringify(error)}
+        {/* add the UI you want your users to see */}
+        </body>
+        </html>
+    );
+}
