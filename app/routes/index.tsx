@@ -48,7 +48,7 @@ const Hero = ({ hero }: { hero: HeroProps }) => {
       height: 127,
       textDecoration:"none"
     }}
-      href={`heroes/${id}`}
+      href={`/${id}`}
     >
       <h6 style={{
         marginTop: "auto",
@@ -63,7 +63,7 @@ const Hero = ({ hero }: { hero: HeroProps }) => {
 
 const SearchHeroes = ({ onHandleChange }: { onHandleChange: Function }) => {
   return (
-    <input style={{ padding: 15, margin: 5 }} placeholder={"Search"} type={"text"}
+          <input style={{width:"96%",height:50,padding:5}} placeholder={"Search"} type={"text"}
            onChange={(e) => onHandleChange(e.target.value)} />
   );
 };
@@ -82,17 +82,23 @@ export default function Heroes() {
       backgroundRepeat:"no-repeat",
       backgroundSize: "cover"
     }}>
+    <div>
       <SearchHeroes onHandleChange={(val: String) => setSearch(val)} />
       <div style={{
-        fontFamily: "system-ui, sans-serif",
+          fontFamily: "system-ui, sans-serif",
         lineHeight: "1.4",
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
-        width: 700
+        width: 700,
+        maxHeight:"90%",
+        overflowY:"auto"
+
       }}>
+
         {heroes.filter((hero: HeroProps) => hero.name_english_loc.toLocaleLowerCase().includes(String(search))).map((hero: HeroProps) =>
-          <Hero hero={hero} />)}
+        <Hero hero={hero} />)}
+      </div>
       </div>
     </div>
   );
